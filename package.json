@@ -1,0 +1,45 @@
+{
+  "name": "pebbble.io-test",
+  "version": "1.0.0",
+  "description": "Tech test for pebbble.io concept",
+  "main": "index.js",
+  "scripts": {
+    "reset": "rm -rf node_modules; rm -rf static/scrs; rm -rf static/stys; ",
+    "postinstall": "mkdir static/scrs; mkdir static/stys; npm run build:prod",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "npm run serve & gulp dev",
+    "build:prod": "gulp prod",
+    "serve": "node index.js",
+    "lint:prettier": "./node_modules/prettier/bin/prettier.js --config ./.prettierrc --write \"./src/**/*.js*\"",
+    "lint:eslint": "./node_modules/eslint/bin/eslint.js --config ./eslintrc.json --fix --ext .js,.jsx ./src",
+    "lint": "npm run lint:prettier; npm run lint:eslint"
+  },
+  "author": "samueleishion",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.18.13",
+    "express": "^4.15.5",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-exec": "^2.1.3",
+    "gulp-prettier": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samueleishion/xexn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samueleishion/xexn/issues"
+  },
+  "homepage": "https://github.com/samueleishion/xexn#readme",
+  "pre-commit": [
+    "lint"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "plugins": [],
+  "parser": "espree",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": false,
+      "modules": true
+    }
+  },
+  "rules": {
+    "jsx-quotes": ["error", "prefer-double"],
+
+    "class-methods-use-this": ["error", {
+      "exceptMethods": [
+        "render",
+        "getInitialState",
+        "getDefaultProps",
+        "getChildContext",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount"
+      ]
+    }],
+    "no-console": "error"
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".json"]
+      }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "15.0"
+    },
+    "propWrapperFunctions": [
+    ]
+  }
+}
