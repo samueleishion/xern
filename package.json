@@ -4,21 +4,48 @@
   "description": "Tech test for pebbble.io concept",
   "main": "index.js",
   "scripts": {
-    "reset": "rm -rf node_modules; rm -rf static/scrs; rm -rf static/stys; ",
-    "postinstall": "mkdir static/scrs; mkdir static/stys; npm run build:prod",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "mkdir static/scrs; mkdir static/stys",
+    "postinstall": "npm run build:prod",
     "build:dev": "npm run serve & gulp dev",
     "build:prod": "gulp prod",
-    "serve": "node index.js",
-    "lint:prettier": "./node_modules/prettier/bin/prettier.js --config ./.prettierrc --write \"./src/**/*.js*\"",
+    "lint:prettier": "./node_modules/prettier/bin/prettier.js --config ./.prettierrc --write \"./src/**/*.js\" --write \"./src/**/*.jsx\"",
     "lint:eslint": "./node_modules/eslint/bin/eslint.js --config ./eslintrc.json --fix --ext .js,.jsx ./src",
-    "lint": "npm run lint:prettier; npm run lint:eslint"
+    "serve": "node index.js",
+    "lint": "npm run lint:prettier; npm run lint:eslint",
+    "clean": "rm -rf static/scrs; rm -rf static/stys; rm -rf node_modules",
+    "validate": "npm ls"
   },
   "author": "samueleishion",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^2.18.13",
-    "express": "^4.15.5",
+    "babel-runtime": "^6.26.0",
+    "express": "^4.13.3",
+    "moment": "^2.12.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "^1.3.0",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^0.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.0.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.18.8",
+    "eslint-plugin-react": "^7.3.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "fs": "^0.0.2",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.1",
     "gulp-concat": "^2.6.1",
@@ -29,16 +56,30 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.11"
+    "gulp-watch": "^4.3.11",
+    "html-webpack-plugin": "^2.30.1",
+    "json-loader": "^0.5.4",
+    "jsx-loader": "^0.13.2",
+    "net": "^1.0.2",
+    "path": "^0.12.7",
+    "precommit-hook": "^3.0.0",
+    "prettier": "^1.5.3",
+    "prop-types": "^15.5.10",
+    "react-autobind": "^1.0.6",
+    "tls": "^0.0.1",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-stream": "^4.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samueleishion/xexn.git"
+    "url": "git+https://github.com/samueleishion/xern.git"
   },
   "bugs": {
-    "url": "https://github.com/samueleishion/xexn/issues"
+    "url": "https://github.com/samueleishion/xern/issues"
   },
-  "homepage": "https://github.com/samueleishion/xexn#readme",
+  "homepage": "https://github.com/samueleishion/xern#readme",
   "pre-commit": [
     "lint"
   ]

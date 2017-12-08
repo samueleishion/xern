@@ -1,0 +1,7 @@
+{
+  "name": "<%= fullname %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "main": "main.js",
+  "author": "<%= author %>"
+}

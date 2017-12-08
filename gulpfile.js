@@ -8,9 +8,10 @@ var gulp = require('gulp'),
   eslint = require('gulp-eslint'),
   prettier = require('gulp-prettier'),
   rename = require('gulp-rename'),
-  concat = require('gulp-concat'),
-  uglify = require('gulp-uglify'),
   bs = require('browser-sync').create(),
+  webpack = require('webpack'),
+  webpackStream = require('webpack-stream'),
+  webpackConfig = require('./webpack.config.js'),
   eslintConfig = {
     configFile: 'eslintrc.json',
     rules: {
@@ -25,6 +26,7 @@ gulp.task('browser-sync', function() {
     logFileChanges: true
   });
 
+  // return gulp.watch(['./src/**/*.*'], function() {
   return gulp.watch(['./static/**/*.*'], function() {
     setTimeout(function() {
       bs.reload();
@@ -34,14 +36,14 @@ gulp.task('browser-sync', function() {
 
 gulp.task('sass', function() {
   return gulp
-    .src(['./src/layouts/styles.scss'])
+    .src(['./src/layouts/perspective.scss'])
     .pipe(
       sass({
         includePaths: ['./src/layouts/', './src/components/', './src/modules'],
         outputStyle: 'compressed'
       }).on('error', sass.logError)
     )
-    .pipe(rename('styles.min.css'))
+    .pipe(rename('perspective.min.css'))
     .pipe(gulp.dest('./static/stys'));
 })
 
@@ -51,19 +53,21 @@ gulp.task('sass:watch', function() {
 
 gulp.task('js', function() {
   return gulp
-    .src('./src/**/*.js')
+    .src(['./src/**/*.js','./src/**/*.jsx'])
     .pipe(eslint(eslintConfig))
     .pipe(eslint.format())
+    // .pipe(concat('bundle.js'))
+    // .pipe(gulp.dest('./static/scrs'))
     .on('error', function(err) {
       gutil.log(gutil.colors.red('[ERROR]', err.toString()));
     })
-    .pipe(concat('bundle.min.js'))
-    .pipe(uglify())
+    .pipe(webpackStream(webpackConfig, webpack))
+    // .pipe(exec('./node_modules/webpack/bin/webpack.js --progress --colors'))
     .pipe(gulp.dest('./static/scrs'));
 });
 
 gulp.task('js:watch', function() {
-  return gulp.watch('./src/**/*.js', ['js']);
+  return gulp.watch(['./src/**/*.js','./src/**/*.jsx'], ['js']);
 });
 
 gulp.task('dev', function() {
