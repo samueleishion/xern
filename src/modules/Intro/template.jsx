@@ -6,9 +6,9 @@
 //   author: samueleishion
 // =======================
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import XERNtest from 'xern-test';
+import React from "react";
+import PropTypes from "prop-types";
+import XERNtest from "xern-test";
 
 const Template = function(props) {
   return (
@@ -25,14 +25,8 @@ const Template = function(props) {
   );
 };
 
-Template.propTypes = {
-  app: PropTypes.object,
-  children: PropTypes.node
-};
+Template.propTypes = {};
 
-Template.defaultProps = {
-  app: {},
-  children: null
-};
+Template.defaultProps = {};
 
 export default Template;

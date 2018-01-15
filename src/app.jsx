@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import { HashRouter, Switch, Route } from 'react-router-dom';
-import request from 'request';
-import Cookie from 'react-cookie';
-import autobind from 'react-autobind';
+import React from "react";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+import { HashRouter, Switch, Route } from "react-router-dom";
+import request from "request";
+import autobind from "react-autobind";
 
-import Intro from 'Intro';
+import Intro from "Intro";
 
 class App extends React.Component {
   constructor(props) {
@@ -40,7 +39,8 @@ class App extends React.Component {
   }
 
   endLoad(load, callback) {
-    let copy = load === undefined ? [] : JSON.parse(JSON.stringify(this.state.loading));
+    let copy =
+      load === undefined ? [] : JSON.parse(JSON.stringify(this.state.loading));
     if (load !== undefined) {
       copy.splice(copy.indexOf(load));
     }
@@ -50,7 +50,7 @@ class App extends React.Component {
       },
       () => {
         // console.log("app.endLoad",this.state.loading.length);
-        if (callback && typeof callback == 'function') callback();
+        if (callback && typeof callback == "function") callback();
       }
     );
   }
@@ -69,7 +69,11 @@ class App extends React.Component {
 
     return (
       <div>
-        <div className={'xern-app' + (this.state.showModal ? ' xern-state--modal' : '')}>
+        <div
+          className={
+            "xern-app" + (this.state.showModal ? " xern-state--modal" : "")
+          }
+        >
           <HashRouter>
             <Switch>
               <Route exact path="/" render={() => <Intro app={appObj} />} />
@@ -82,4 +86,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('main'));
+ReactDOM.render(<App />, document.getElementById("main"));

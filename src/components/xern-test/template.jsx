@@ -6,11 +6,15 @@
 // 	author: samueleishion
 // =======================
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 const Template = function(props) {
-  return <div className="xern-test">{props.children}</div>;
+  return (
+    <div className="xern-test">
+      {props.children}
+    </div>
+  );
 };
 
 Template.propTypes = {

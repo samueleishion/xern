@@ -6,11 +6,11 @@
 // 	author: samueleishion
 // =======================
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import Template from './template';
-import autobind from 'react-autobind';
+import React from "react";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+import Template from "./template";
+import autobind from "react-autobind";
 
 class Component extends React.Component {
   static propTypes = {
