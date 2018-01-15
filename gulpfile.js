@@ -17,7 +17,8 @@ var gulp = require('gulp'),
     rules: {
       "no-console": "off"
     }
-  };
+  },
+  jsWatch = false;
 
 // Dev mode with hot-reloading
 gulp.task('browser-sync', function() {
@@ -52,6 +53,7 @@ gulp.task('sass:watch', function() {
 });
 
 gulp.task('js', function() {
+  webpackConfig.watch = jsWatch; 
   return gulp
     .src(['./src/**/*.js','./src/**/*.jsx'])
     .pipe(eslint(eslintConfig))
@@ -67,6 +69,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('js:watch', function() {
+  jsWatch = true;
   return gulp.watch(['./src/**/*.js','./src/**/*.jsx'], ['js']);
 });
 
